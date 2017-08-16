@@ -69,6 +69,8 @@ public class RemovrCompositeSpec extends RemovrSpec {
                 }
                 else if (rawRhs instanceof String && ((String)rawRhs).trim().length() == 0) {
                     childSpec = new RemovrLeafSpec(keyString);
+                } else if (rawRhs instanceof String && ((String)rawRhs).trim().length() > 0) {
+                    childSpec = new RemovrLeafCoditionSpec(keyString, ((String)rawRhs).trim());
                 }
                 else{
                     throw new SpecException("Invalid Removr spec RHS. Should be an empty string or Map");
